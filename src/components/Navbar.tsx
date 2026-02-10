@@ -5,9 +5,9 @@ const NAV_ITEMS = [
   { label: 'Inicio', href: '#hero' },
   { label: 'Servicios', href: '#planes' },
   { label: 'Paquetes', href: '#paquetes' },
+  { label: 'Mantenimiento', href: '#mantenimiento' },
   { label: 'Marketing', href: '#marketing' },
   { label: 'Tecnología', href: '#tecnologia' },
-  { label: 'Costos', href: '#costos' },
   { label: 'FAQ', href: '#faq' },
 ];
 

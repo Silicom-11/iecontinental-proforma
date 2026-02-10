@@ -17,10 +17,10 @@ export default function App() {
       <Hero />
       <Plans />
       <Bundles />
+      <MonthlyCosts />
       <Marketing />
       <TechStack />
       <Timeline />
-      <MonthlyCosts />
       <Guarantees />
       <FAQ />
       <Footer />

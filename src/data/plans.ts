@@ -426,39 +426,23 @@ export const BUNDLES: BundlePack[] = [
 
 export const MONTHLY_COSTS_BUNDLE = {
   items: [
-    {
-      category: 'Servidor Cloud + Base de Datos',
-      cost: 100,
-      description: 'Infraestructura empresarial con monitoreo 24/7',
-      includes: ['VPS Hetzner Cloud (Virginia, USA)', 'MongoDB Atlas con réplicas', 'Monitoreo UptimeRobot 24/7', 'Actualizaciones de seguridad'],
-    },
-    {
-      category: 'Almacenamiento Cloud + Respaldos',
-      cost: 45,
-      description: 'Archivos, imágenes y backups automáticos diarios',
-      includes: ['Cloudflare R2 (almacenamiento)', 'Backups diarios automáticos', 'CDN global Cloudflare', 'Certificado SSL/HTTPS'],
-    },
-    {
-      category: '2 Dominios .edu.pe',
-      cost: 20,
-      description: 'Renovación anual prorrateada — registrados en NIC.pe',
-      includes: ['iecontinental.edu.pe (principal)', 'Segundo dominio .edu.pe', 'Gestión DNS Cloudflare', 'Protección DDoS incluida'],
-    },
-    {
-      category: 'WhatsApp Business + Email',
-      cost: 50,
-      description: 'Comunicación directa y automatizada con padres',
-      includes: ['API oficial WhatsApp Business', 'Email transaccional (Resend)', 'Consulta DNI vía RENIEC', 'Notificaciones automáticas'],
-    },
-    {
-      category: 'Soporte Técnico + Actualizaciones',
-      cost: 135,
-      description: 'Equipo de desarrollo disponible para tu colegio',
-      includes: ['Corrección de errores (bugs)', 'Consultas técnicas ilimitadas', 'Actualización de dependencias', 'Mejoras menores incluidas'],
-    },
+    { service: 'Servidor VPS (Hetzner CPX21)', cost: 40, note: '3 vCPU AMD, 4GB RAM, 80GB SSD — €9.49/mes', paid: true },
+    { service: 'Base de Datos (MongoDB Atlas Flex)', cost: 57, note: 'Desde $0.011/hora, máx. $30/mes — réplicas automáticas', paid: true },
+    { service: '2 Dominios .edu.pe (NIC.pe)', cost: 18, note: 'S/110 c/u al año, prorrateado mensual', paid: true },
+    { service: 'Cloudflare R2 (Almacenamiento)', cost: 0, note: 'Free tier — 10GB storage, sin costo por descarga', paid: false },
+    { service: 'Cloudflare (CDN + SSL + DDoS)', cost: 0, note: 'Plan gratuito — protección empresarial incluida', paid: false },
+    { service: 'API WhatsApp Business (Meta)', cost: 15, note: '~500 mensajes/mes — API oficial de Meta', paid: true },
+    { service: 'Email Transaccional (Resend)', cost: 0, note: '3,000 emails gratis/mes', paid: false },
+    { service: 'RENIEC API — Consulta DNI', cost: 30, note: 'apis.net.pe — Plan Básico ~1,000 consultas/mes', paid: true },
+    { service: 'Monitoreo 24/7 (UptimeRobot)', cost: 0, note: 'Plan gratuito — alertas instantáneas', paid: false },
+    { service: 'Soporte Técnico + Actualizaciones', cost: 190, note: 'Bugs, consultas ilimitadas, mejoras, seguridad', paid: true },
   ],
   total: 350,
   comparison: 'Empresas similares cobran S/800 — S/1,500/mes por servicios equivalentes.',
+  optionalMarketing: {
+    management: { cost: 350, label: 'Gestión Redes Sociales + Analista de Métricas', note: 'Administración de Facebook + TikTok, creación de contenido, análisis y optimización de campañas' },
+    adBudget: { min: 300, max: 500, label: 'Presupuesto Publicitario (Facebook + TikTok Ads)', note: 'Inversión directa en las plataformas — el colegio lo controla desde su cuenta' },
+  },
 };
 
 /* ──────────────────── MARKETING DETAILS ──────────────────── */

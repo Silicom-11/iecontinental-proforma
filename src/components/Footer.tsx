@@ -78,7 +78,7 @@ export default function Footer() {
               <div className="space-y-3">
                 <a href="tel:+51999999999" className="flex items-center gap-3 text-slate-400 text-sm hover:text-white transition-colors">
                   <Phone size={14} />
-                  +51 999 999 999
+                  +51 906 531 980
                 </a>
                 <a href="mailto:contacto@silicom.dev" className="flex items-center gap-3 text-slate-400 text-sm hover:text-white transition-colors">
                   <Mail size={14} />
