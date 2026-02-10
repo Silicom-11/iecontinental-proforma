@@ -1,16 +1,15 @@
 import { motion } from 'framer-motion';
 import { MONTHLY_COSTS_BUNDLE } from '../data/plans';
-import { DollarSign, TrendingDown, Info } from 'lucide-react';
+import { DollarSign, Shield, Info, Server, HardDrive, Globe, MessageCircle, Wrench } from 'lucide-react';
+
+const CATEGORY_ICONS = [Server, HardDrive, Globe, MessageCircle, Wrench];
 
 export default function MonthlyCosts() {
   const costs = MONTHLY_COSTS_BUNDLE;
-  const realCost = costs.items.reduce((sum, item) => sum + item.cost, 0);
-  const margin = costs.total - realCost;
-  const marginPercent = Math.round((margin / costs.total) * 100);
 
   return (
     <section id="costos" className="relative py-24 md:py-32 mesh-gradient">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,26 +36,44 @@ export default function MonthlyCosts() {
           viewport={{ once: true }}
           className="glass-strong rounded-3xl overflow-hidden"
         >
-          {/* Items */}
           <div className="divide-y divide-slate-800/50">
-            {costs.items.map((item, i) => (
-              <div key={i} className="flex items-center justify-between px-6 md:px-8 py-4 hover:bg-slate-800/20 transition-colors">
-                <div className="flex items-center gap-3">
-                  <div className={`w-2 h-2 rounded-full ${item.cost > 0 ? 'bg-amber-400' : 'bg-green-400'}`} />
-                  <div>
-                    <div className="text-white text-sm font-medium">{item.service}</div>
-                    <div className="text-slate-500 text-xs">{item.note}</div>
+            {costs.items.map((item, i) => {
+              const Icon = CATEGORY_ICONS[i];
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="px-6 md:px-8 py-5 hover:bg-slate-800/20 transition-colors"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-3.5 flex-1">
+                      <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Icon size={16} className="text-amber-400" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-white font-semibold">{item.category}</div>
+                        <div className="text-slate-500 text-sm mt-0.5">{item.description}</div>
+                        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                          {item.includes.map((inc, j) => (
+                            <span key={j} className="text-slate-600 text-xs flex items-center gap-1.5">
+                              <span className="w-1 h-1 rounded-full bg-slate-700" />
+                              {inc}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <span className="text-white font-bold text-lg">S/{item.cost}</span>
+                      <span className="text-slate-600 text-xs block">/mes</span>
+                    </div>
                   </div>
-                </div>
-                <div className="text-right">
-                  {item.cost > 0 ? (
-                    <span className="text-white font-bold">S/{item.cost}</span>
-                  ) : (
-                    <span className="text-green-400 font-bold text-sm">GRATIS</span>
-                  )}
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Total */}
@@ -78,21 +95,22 @@ export default function MonthlyCosts() {
           </div>
         </motion.div>
 
-        {/* Savings callout */}
+        {/* Competitive comparison */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-start gap-4 glass rounded-2xl p-5 mt-6 border-l-4 border-green-500"
+          className="flex items-start gap-4 glass rounded-2xl p-5 mt-6 border-l-4 border-emerald-500"
         >
-          <TrendingDown size={20} className="text-green-400 flex-shrink-0 mt-0.5" />
+          <Shield size={20} className="text-emerald-400 flex-shrink-0 mt-0.5" />
           <div>
             <p className="text-white text-sm font-semibold mb-1">
-              Costo real de infraestructura: S/{realCost}/mes
+              Precio competitivo garantizado
             </p>
             <p className="text-slate-400 text-xs">
-              El margen de S/{margin}/mes ({marginPercent}%) cubre soporte técnico, actualizaciones de seguridad,
-              monitoreo y garantía de funcionamiento continuo. Competitivo frente a servicios similares que cobran S/800-1,500/mes.
+              {costs.comparison} Nuestro precio incluye servidores enterprise,
+              almacenamiento cloud, soporte directo del desarrollador y
+              actualizaciones de seguridad continuas.
             </p>
           </div>
         </motion.div>
@@ -101,8 +119,9 @@ export default function MonthlyCosts() {
         <div className="flex items-start gap-3 mt-4 text-slate-500 text-xs">
           <Info size={14} className="flex-shrink-0 mt-0.5" />
           <p>
-            Precios en dólares convertidos a soles (TC S/3.80).
-            Muchos servicios son gratuitos gracias a free tiers de proveedores enterprise.
+            Los costos mensuales varían según el paquete elegido. Este ejemplo corresponde al
+            Pack Transformación Total. Todos los precios en soles peruanos. Dominios .edu.pe
+            renovados anualmente ante NIC.pe (S/110 c/u por año).
           </p>
         </div>
       </div>

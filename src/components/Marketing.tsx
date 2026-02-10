@@ -23,7 +23,7 @@ export default function Marketing() {
             📣 MARKETING DIGITAL
           </span>
           <h2 className="text-white mb-4">
-            Facebook & Instagram Ads +{' '}
+            Facebook & TikTok Ads +{' '}
             <span className="gradient-text">Analista de Métricas</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
@@ -88,7 +88,7 @@ export default function Marketing() {
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold mb-4">
                 <BarChart3 size={14} />
-                INCLUIDO EN PLAN PROFESIONAL Y EMPRESARIAL
+                INCLUIDO EN PLAN GROWTH Y SCALE
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 {metricsAnalyst.title}

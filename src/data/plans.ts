@@ -304,7 +304,7 @@ const MARKETING: Product = {
   id: 'marketing',
   name: 'Marketing Digital',
   tagline: 'Más alumnos con campañas inteligentes',
-  description: 'Campañas en Facebook e Instagram + analista de métricas que optimiza cada sol invertido en publicidad.',
+  description: 'Campañas en Facebook y TikTok + analista de métricas que optimiza cada sol invertido en publicidad.',
   icon: Megaphone,
   emoji: '📣',
   colorAccent: 'text-pink-400',
@@ -321,13 +321,13 @@ const MARKETING: Product = {
       popular: false,
       cta: 'Elegir Starter',
       features: [
-        { text: 'Configuración Meta Business Suite', included: true },
+        { text: 'Configuración Facebook Ads + TikTok Ads', included: true },
         { text: 'Creación página Facebook profesional', included: true },
-        { text: 'Creación perfil Instagram profesional', included: true },
+        { text: 'Creación cuenta TikTok profesional', included: true },
         { text: '1 campaña publicitaria (admisión)', included: true },
         { text: 'Diseño de 5 anuncios gráficos', included: true },
         { text: 'Segmentación: Pichanaki y alrededores', included: true },
-        { text: 'Pixel de Meta en tu web', included: false },
+        { text: 'Pixel de Meta + TikTok Pixel', included: false },
         { text: 'Analista de métricas (1er mes)', included: false },
         { text: 'A/B testing de anuncios', included: false },
         { text: 'Reporte mensual de rendimiento', included: false },
@@ -342,13 +342,13 @@ const MARKETING: Product = {
       popular: true,
       cta: '📈 Elegir Growth',
       features: [
-        { text: 'Configuración Meta Business Suite', included: true },
+        { text: 'Configuración Facebook Ads + TikTok Ads', included: true },
         { text: 'Creación página Facebook profesional', included: true },
-        { text: 'Creación perfil Instagram profesional', included: true },
+        { text: 'Creación cuenta TikTok profesional', included: true },
         { text: '3 campañas publicitarias', included: true },
         { text: 'Diseño de 15 anuncios (fotos + videos)', included: true },
         { text: 'Segmentación: Pichanaki + Selva Central', included: true },
-        { text: 'Pixel de Meta + tracking conversiones', included: true, highlight: true },
+        { text: 'Pixel de Meta + TikTok Pixel', included: true, highlight: true },
         { text: 'Analista de métricas (1er mes)', included: true, highlight: true },
         { text: 'A/B testing de anuncios', included: true, highlight: true },
         { text: 'Reporte mensual de rendimiento', included: true, highlight: true },
@@ -363,13 +363,13 @@ const MARKETING: Product = {
       popular: false,
       cta: 'Elegir Scale',
       features: [
-        { text: 'Configuración Meta Business Suite completa', included: true },
+        { text: 'Configuración Facebook Ads + TikTok Ads completa', included: true },
         { text: 'Creación página Facebook profesional', included: true },
-        { text: 'Creación perfil Instagram profesional', included: true },
+        { text: 'Creación cuenta TikTok profesional', included: true },
         { text: '5 campañas publicitarias avanzadas', included: true },
-        { text: 'Diseño de 30 anuncios (fotos + reels)', included: true },
+        { text: 'Diseño de 30 anuncios (fotos + videos TikTok)', included: true },
         { text: 'Segmentación: Junín + Regiones vecinas', included: true },
-        { text: 'Pixel de Meta + tracking avanzado', included: true },
+        { text: 'Pixel de Meta + TikTok Pixel avanzado', included: true },
         { text: 'Analista de métricas permanente', included: true, highlight: true },
         { text: 'A/B testing continuo', included: true },
         { text: 'Reportes semanales de rendimiento', included: true },
@@ -426,18 +426,39 @@ export const BUNDLES: BundlePack[] = [
 
 export const MONTHLY_COSTS_BUNDLE = {
   items: [
-    { service: 'Servidor VPS (Hetzner Cloud)', cost: 35, note: '~$9/mes' },
-    { service: 'MongoDB Atlas (Base de datos)', cost: 36, note: '~$9/mes' },
-    { service: 'Dominio .edu.pe', cost: 8, note: 'Anual prorrateado' },
-    { service: 'Cloudflare R2 (Almacenamiento)', cost: 0, note: 'Free tier' },
-    { service: 'Cloudflare (CDN + SSL + DDoS)', cost: 0, note: 'Plan Free' },
-    { service: 'WhatsApp Business API', cost: 15, note: '~500 msgs/mes' },
-    { service: 'Resend (Emails)', cost: 0, note: '3,000 gratis/mes' },
-    { service: 'RENIEC API (Consulta DNI)', cost: 0, note: '2,000 gratis/mes' },
-    { service: 'Monitoreo (UptimeRobot)', cost: 0, note: 'Plan Free' },
-    { service: 'Soporte técnico + Actualizaciones', cost: 256, note: 'Incluido' },
+    {
+      category: 'Servidor Cloud + Base de Datos',
+      cost: 100,
+      description: 'Infraestructura empresarial con monitoreo 24/7',
+      includes: ['VPS Hetzner Cloud (Virginia, USA)', 'MongoDB Atlas con réplicas', 'Monitoreo UptimeRobot 24/7', 'Actualizaciones de seguridad'],
+    },
+    {
+      category: 'Almacenamiento Cloud + Respaldos',
+      cost: 45,
+      description: 'Archivos, imágenes y backups automáticos diarios',
+      includes: ['Cloudflare R2 (almacenamiento)', 'Backups diarios automáticos', 'CDN global Cloudflare', 'Certificado SSL/HTTPS'],
+    },
+    {
+      category: '2 Dominios .edu.pe',
+      cost: 20,
+      description: 'Renovación anual prorrateada — registrados en NIC.pe',
+      includes: ['iecontinental.edu.pe (principal)', 'Segundo dominio .edu.pe', 'Gestión DNS Cloudflare', 'Protección DDoS incluida'],
+    },
+    {
+      category: 'WhatsApp Business + Email',
+      cost: 50,
+      description: 'Comunicación directa y automatizada con padres',
+      includes: ['API oficial WhatsApp Business', 'Email transaccional (Resend)', 'Consulta DNI vía RENIEC', 'Notificaciones automáticas'],
+    },
+    {
+      category: 'Soporte Técnico + Actualizaciones',
+      cost: 135,
+      description: 'Equipo de desarrollo disponible para tu colegio',
+      includes: ['Corrección de errores (bugs)', 'Consultas técnicas ilimitadas', 'Actualización de dependencias', 'Mejoras menores incluidas'],
+    },
   ],
   total: 350,
+  comparison: 'Empresas similares cobran S/800 — S/1,500/mes por servicios equivalentes.',
 };
 
 /* ──────────────────── MARKETING DETAILS ──────────────────── */
@@ -452,11 +473,11 @@ export const MARKETING_DETAILS = {
       adTypes: ['Anuncios de imagen', 'Videos cortos', 'Carrusel de fotos', 'Historias'],
     },
     {
-      name: 'Instagram',
-      icon: '📸',
-      audience: 'Padres jóvenes 20-40 años',
-      reach: 'Selva Central + Junín',
-      adTypes: ['Reels educativos', 'Stories interactivas', 'Posts de logros', 'Infografías'],
+      name: 'TikTok',
+      icon: '🎵',
+      audience: 'Padres jóvenes 18-40 años + estudiantes',
+      reach: 'Selva Central + Junín + Nacional',
+      adTypes: ['Videos virales educativos', 'TikTok Ads In-Feed', 'Contenido trending educativo', 'Testimonios de alumnos'],
     },
   ],
   metricsAnalyst: {
@@ -479,7 +500,7 @@ export const MARKETING_DETAILS = {
   },
   adBudget: {
     recommended: 'S/ 300 - 500 / mes',
-    note: 'Presupuesto publicitario adicional que el colegio invierte directamente en Meta. No incluido en nuestros planes.',
+    note: 'Presupuesto publicitario adicional que el colegio invierte directamente en Facebook y TikTok Ads. No incluido en nuestros planes.',
   },
 };
 
@@ -528,11 +549,11 @@ export const FAQS = [
     answer: 'En MongoDB Atlas (Virginia, USA) con encriptación, réplicas automáticas y backups diarios. Los archivos se guardan en Cloudflare R2, servicio empresarial con 0 costo por descarga.',
   },
   {
-    question: '¿Cómo funciona el marketing en Facebook e Instagram?',
-    answer: 'Configuramos Meta Business Suite con Pixel de seguimiento en tu web. Creamos campañas segmentadas por ubicación (Pichanaki y alrededores), edad e intereses educativos. El analista optimiza para maximizar matrículas.',
+    question: '¿Cómo funciona el marketing en Facebook y TikTok?',
+    answer: 'Configuramos Facebook Ads Manager y TikTok Ads con Pixel de seguimiento en tu web. Creamos campañas segmentadas por ubicación (Pichanaki y alrededores), edad e intereses educativos. El analista optimiza para maximizar matrículas.',
   },
   {
     question: '¿El colegio necesita contratar algo adicional?',
-    answer: 'No. Todo incluido. El único costo adicional opcional es el presupuesto de Meta Ads (recomendamos S/200-500/mes) que el colegio controla directamente.',
+    answer: 'No. Todo incluido. El único costo adicional opcional es el presupuesto de Facebook y TikTok Ads (recomendamos S/300-500/mes) que el colegio controla directamente.',
   },
 ];
