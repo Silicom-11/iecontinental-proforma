@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Plans from './components/Plans';
-import Bundles from './components/Bundles';
 import Marketing from './components/Marketing';
 import TechStack from './components/TechStack';
 import Timeline from './components/Timeline';
@@ -16,7 +15,6 @@ export default function App() {
       <Navbar />
       <Hero />
       <Plans />
-      <Bundles />
       <MonthlyCosts />
       <Marketing />
       <TechStack />

@@ -4,7 +4,6 @@ import { Menu, X, ChevronUp } from 'lucide-react';
 const NAV_ITEMS = [
   { label: 'Inicio', href: '#hero' },
   { label: 'Servicios', href: '#planes' },
-  { label: 'Paquetes', href: '#paquetes' },
   { label: 'Mantenimiento', href: '#mantenimiento' },
   { label: 'Marketing', href: '#marketing' },
   { label: 'Tecnología', href: '#tecnologia' },
@@ -63,10 +62,10 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#paquetes"
+                href="#planes"
                 className="ml-3 px-5 py-2.5 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl text-sm font-bold hover:shadow-lg hover:shadow-amber-500/30 transition-all hover:scale-105"
               >
-                Ver Paquetes
+                Ver Servicios
               </a>
             </div>
 
@@ -98,11 +97,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#paquetes"
+              href="#planes"
               onClick={() => setIsOpen(false)}
               className="block text-center mt-3 px-5 py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl text-sm font-bold"
             >
-              Ver Paquetes
+              Ver Servicios
             </a>
           </div>
         </div>

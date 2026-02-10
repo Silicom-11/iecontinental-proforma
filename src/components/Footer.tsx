@@ -59,10 +59,10 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-lg">
-                  S
+                  MA
                 </div>
                 <div>
-                  <span className="text-white font-bold">Silicom</span>
+                  <span className="text-white font-bold">Marc Aquino</span>
                   <span className="block text-xs text-slate-500">Desarrollo de Software</span>
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function Footer() {
               <div className="space-y-3">
                 <a href="tel:+51999999999" className="flex items-center gap-3 text-slate-400 text-sm hover:text-white transition-colors">
                   <Phone size={14} />
-                  +51 906 531 980
+                  +51 906 531 980V
                 </a>
                 <a href="mailto:contacto@silicom.dev" className="flex items-center gap-3 text-slate-400 text-sm hover:text-white transition-colors">
                   <Mail size={14} />
@@ -117,7 +117,7 @@ export default function Footer() {
           {/* Bottom bar */}
           <div className="border-t border-slate-800/50 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-slate-600 text-xs">
-              © {new Date().getFullYear()} Silicom. Propuesta exclusiva para I.E. Continental Americano.
+              © {new Date().getFullYear()} Marc Aquino. Propuesta exclusiva para I.E. Continental Americano.
             </p>
             <p className="text-slate-700 text-xs">
               Documento confidencial • Válido por 60 días desde la fecha de emisión

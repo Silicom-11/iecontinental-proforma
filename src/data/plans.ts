@@ -51,7 +51,7 @@ export interface BundlePack {
 const WEB_PAGE: Product = {
   id: 'web',
   name: 'Página Web Institucional',
-  tagline: 'Tu colegio visible para todo Pichanaki',
+  tagline: 'Tu colegio visible para todo el Perú',
   description: 'Presencia digital profesional con diseño moderno, adaptado a móviles y optimizado para Google.',
   icon: Globe,
   emoji: '🌐',
@@ -86,7 +86,7 @@ const WEB_PAGE: Product = {
     {
       id: 'web-profesional',
       name: 'Profesional',
-      price: 5500,
+      price: 4500,
       popular: true,
       cta: '⭐ Elegir Profesional',
       features: [
@@ -107,7 +107,7 @@ const WEB_PAGE: Product = {
     {
       id: 'web-premium',
       name: 'Premium',
-      price: 8000,
+      price: 5000,
       popular: false,
       cta: 'Elegir Premium',
       features: [
@@ -147,7 +147,7 @@ const INTRANET: Product = {
     {
       id: 'intranet-estandar',
       name: 'Estándar',
-      price: 7500,
+      price: 3800,
       popular: false,
       cta: 'Elegir Estándar',
       features: [
@@ -170,7 +170,7 @@ const INTRANET: Product = {
     {
       id: 'intranet-avanzada',
       name: 'Avanzada',
-      price: 12500,
+      price: 4200,
       popular: true,
       cta: '🚀 Elegir Avanzada',
       features: [
@@ -193,7 +193,7 @@ const INTRANET: Product = {
     {
       id: 'intranet-enterprise',
       name: 'Enterprise',
-      price: 18000,
+      price: 6200,
       popular: false,
       cta: 'Elegir Enterprise',
       features: [
@@ -235,7 +235,7 @@ const MATRICULA: Product = {
     {
       id: 'matricula-basica',
       name: 'Básica',
-      price: 4000,
+      price: 3200,
       popular: false,
       cta: 'Elegir Básica',
       features: [
@@ -256,7 +256,7 @@ const MATRICULA: Product = {
     {
       id: 'matricula-completa',
       name: 'Completa',
-      price: 6500,
+      price: 4500,
       popular: true,
       cta: '✅ Elegir Completa',
       features: [
@@ -270,14 +270,14 @@ const MATRICULA: Product = {
         { text: 'Sincronización con la nube (API)', included: true, highlight: true },
         { text: 'Reportes de matrícula en PDF', included: true, highlight: true },
         { text: 'Historial académico por alumno', included: true, highlight: true },
-        { text: 'Migración de datos antiguos (FoxPro)', included: false },
+        { text: 'Migración de datos antiguos (FoxPro)', included: true, highlight: true },
         { text: 'Multi-sede (varias sedes/turnos)', included: false },
       ],
     },
     {
       id: 'matricula-enterprise',
       name: 'Enterprise',
-      price: 9500,
+      price: 6500,
       popular: false,
       cta: 'Elegir Enterprise',
       features: [
@@ -317,7 +317,7 @@ const MARKETING: Product = {
     {
       id: 'mkt-starter',
       name: 'Starter',
-      price: 2500,
+      price: 2400,
       popular: false,
       cta: 'Elegir Starter',
       features: [
@@ -338,7 +338,7 @@ const MARKETING: Product = {
     {
       id: 'mkt-growth',
       name: 'Growth',
-      price: 4500,
+      price: 4250,
       popular: true,
       cta: '📈 Elegir Growth',
       features: [
@@ -359,7 +359,7 @@ const MARKETING: Product = {
     {
       id: 'mkt-scale',
       name: 'Scale',
-      price: 7500,
+      price: 5500,
       popular: false,
       cta: 'Elegir Scale',
       features: [
@@ -386,41 +386,7 @@ export const PRODUCTS: Product[] = [WEB_PAGE, INTRANET, MATRICULA, MARKETING];
 
 /* ──────────────────── BUNDLE PACKS ──────────────────── */
 
-export const BUNDLES: BundlePack[] = [
-  {
-    id: 'pack-digital',
-    name: 'Pack Presencia Digital',
-    tagline: 'Web + Marketing',
-    products: ['web', 'marketing'],
-    priceSum: 5500 + 4500,
-    bundlePrice: 8900,
-    popular: false,
-    monthlyMaintenance: 250,
-    color: 'blue',
-  },
-  {
-    id: 'pack-completo',
-    name: 'Pack Transformación Total',
-    tagline: 'Los 4 servicios — La inversión definitiva',
-    products: ['web', 'intranet', 'matricula', 'marketing'],
-    priceSum: 5500 + 12500 + 6500 + 4500,
-    bundlePrice: 22900,
-    popular: true,
-    monthlyMaintenance: 407,
-    color: 'gold',
-  },
-  {
-    id: 'pack-educativo',
-    name: 'Pack Educativo',
-    tagline: 'Web + Intranet + Matrícula',
-    products: ['web', 'intranet', 'matricula'],
-    priceSum: 5500 + 12500 + 6500,
-    bundlePrice: 19500,
-    popular: false,
-    monthlyMaintenance: 350,
-    color: 'purple',
-  },
-];
+export const BUNDLES: BundlePack[] = [];
 
 /* ──────────────────── MONTHLY COSTS ──────────────────── */
 
@@ -437,7 +403,7 @@ export const MONTHLY_COSTS_BUNDLE = {
   total: 407,
   comparison: 'Empresas similares cobran S/800 — S/1,500/mes por servicios equivalentes.',
   optionalMarketing: {
-    management: { cost: 350, label: 'Gestión Redes Sociales + Analista de Métricas', note: 'Administración de Facebook + TikTok, creación de contenido, análisis y optimización de campañas' },
+    management: { cost: 1100, label: 'Gestión Redes Sociales + Analista de Métricas', note: 'Desde S/1,100/mes — sujeto a los requerimientos del cliente. Incluye administración de Facebook + TikTok, creación de contenido, análisis diario y optimización de campañas' },
     adBudget: { min: 300, max: 500, label: 'Presupuesto Publicitario (Facebook + TikTok Ads)', note: 'Inversión directa en las plataformas — el colegio lo controla desde su cuenta' },
   },
 };
@@ -507,7 +473,7 @@ export const TECH_STACK = [
 export const FAQS = [
   {
     question: '¿Puedo contratar solo un servicio sin los demás?',
-    answer: '¡Sí! Cada servicio es independiente. Puedes contratar solo la Página Web, solo la Intranet, o la combinación que necesites. Los paquetes te dan mejor precio si eliges varios.',
+    answer: '¡Sí! Cada servicio es independiente. Puedes contratar solo la Página Web, solo la Intranet, o la combinación que necesites. Contáctanos para armar tu plan personalizado.',
   },
   {
     question: '¿Cuánto tiempo toma el desarrollo?',

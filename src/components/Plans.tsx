@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, X, Star, ArrowRight, Clock, ChevronDown } from 'lucide-react';
+import { Check, X, Star, Clock, ChevronDown } from 'lucide-react';
 import { PRODUCTS } from '../data/plans';
 import type { Product, PlanTier } from '../data/plans';
 
@@ -200,13 +200,6 @@ export default function Plans() {
                 </a>
               );
             })}
-            <a
-              href="#paquetes"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-amber-400/20 to-orange-500/20 text-amber-400 border border-amber-500/30 hover:scale-105 transition-all"
-            >
-              <ArrowRight size={16} />
-              Ver Paquetes
-            </a>
           </motion.div>
         </div>
       </div>

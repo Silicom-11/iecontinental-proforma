@@ -173,9 +173,9 @@ export default function Hero() {
           className="mt-16 text-slate-600 text-xs flex items-center justify-center gap-2"
         >
           <span>Desarrollado por</span>
-          <span className="text-slate-400 font-semibold">Silicom</span>
+          <span className="text-slate-400 font-semibold">Marc Aquino</span>
           <span>•</span>
-          <span>Tecnología de clase mundial</span>
+          <span>& su equipo de desarrollo de alto nivel</span>
         </motion.div>
       </div>
 

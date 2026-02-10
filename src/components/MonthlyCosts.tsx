@@ -141,7 +141,7 @@ export default function MonthlyCosts() {
                 </div>
               </div>
               <div className="text-right flex-shrink-0 ml-4">
-                <span className="text-white font-bold">S/{optionalMarketing.management.cost}</span>
+                <span className="text-pink-400 font-bold text-sm">Desde S/{optionalMarketing.management.cost}</span>
                 <span className="text-slate-500 text-xs block">/mes</span>
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function MonthlyCosts() {
                 </div>
                 <div className="text-right">
                   <span className="text-pink-400 font-bold">
-                    S/{optionalMarketing.management.cost + optionalMarketing.adBudget.min} — S/{optionalMarketing.management.cost + optionalMarketing.adBudget.max}/mes
+                    Desde S/{optionalMarketing.management.cost + optionalMarketing.adBudget.min}/mes
                   </span>
                 </div>
               </div>
