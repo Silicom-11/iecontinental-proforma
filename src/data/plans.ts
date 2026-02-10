@@ -426,18 +426,15 @@ export const BUNDLES: BundlePack[] = [
 
 export const MONTHLY_COSTS_BUNDLE = {
   items: [
-    { service: 'Servidor VPS (Hetzner CPX21)', cost: 40, note: '3 vCPU AMD, 4GB RAM, 80GB SSD — €9.49/mes', paid: true },
+    { service: 'Servidor VPS (Hetzner CPX21)', cost: 45, note: '3 vCPU AMD, 4GB RAM, 80GB SSD — €9.49/mes', paid: true },
     { service: 'Base de Datos (MongoDB Atlas Flex)', cost: 57, note: 'Desde $0.011/hora, máx. $30/mes — réplicas automáticas', paid: true },
-    { service: '2 Dominios .edu.pe (NIC.pe)', cost: 18, note: 'S/110 c/u al año, prorrateado mensual', paid: true },
-    { service: 'Cloudflare R2 (Almacenamiento)', cost: 0, note: 'Free tier — 10GB storage, sin costo por descarga', paid: false },
-    { service: 'Cloudflare (CDN + SSL + DDoS)', cost: 0, note: 'Plan gratuito — protección empresarial incluida', paid: false },
-    { service: 'API WhatsApp Business (Meta)', cost: 15, note: '~500 mensajes/mes — API oficial de Meta', paid: true },
-    { service: 'Email Transaccional (Resend)', cost: 0, note: '3,000 emails gratis/mes', paid: false },
-    { service: 'RENIEC API — Consulta DNI', cost: 30, note: 'apis.net.pe — Plan Básico ~1,000 consultas/mes', paid: true },
+    { service: '2 Dominios .edu.pe (NIC.pe)', cost: 20, note: 'S/110 c/u al año, prorrateado mensual', paid: true },
+    { service: 'Cloudflare (R2 + CDN + SSL + DDoS)', cost: 45, note: 'Almacenamiento, backups, CDN global y protección empresarial', paid: true },
+    { service: 'RENIEC API — Consulta DNI', cost: 50, note: 'apis.net.pe — Plan Básico ~1,000 consultas/mes', paid: true },
     { service: 'Monitoreo 24/7 (UptimeRobot)', cost: 0, note: 'Plan gratuito — alertas instantáneas', paid: false },
     { service: 'Soporte Técnico + Actualizaciones', cost: 190, note: 'Bugs, consultas ilimitadas, mejoras, seguridad', paid: true },
   ],
-  total: 350,
+  total: 407,
   comparison: 'Empresas similares cobran S/800 — S/1,500/mes por servicios equivalentes.',
   optionalMarketing: {
     management: { cost: 350, label: 'Gestión Redes Sociales + Analista de Métricas', note: 'Administración de Facebook + TikTok, creación de contenido, análisis y optimización de campañas' },
