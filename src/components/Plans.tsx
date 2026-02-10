@@ -1,234 +1,222 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, X, Star, ArrowRight, Clock, Wrench } from 'lucide-react';
-import { PLANS } from '../data/plans';
-import type { Plan } from '../data/plans';
+import { Check, X, Star, ArrowRight, Clock, ChevronDown } from 'lucide-react';
+import { PRODUCTS } from '../data/plans';
+import type { Product, PlanTier } from '../data/plans';
 
-function PlanCard({ plan, index }: { plan: Plan; index: number }) {
+/* ─── Single tier card ─── */
+function TierCard({ tier, product, index }: { tier: PlanTier; product: Product; index: number }) {
   const [expanded, setExpanded] = useState(false);
-  const Icon = plan.icon;
+  const included = tier.features.filter((f) => f.included);
+  const excluded = tier.features.filter((f) => !f.included);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      className={`relative flex flex-col rounded-3xl overflow-hidden transition-all duration-500 ${
-        plan.popular
-          ? 'gradient-border lg:scale-105 lg:-my-4 z-10'
+      viewport={{ once: true, margin: '-30px' }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 ${
+        tier.popular
+          ? 'gradient-border lg:scale-[1.03] z-10'
           : ''
       }`}
     >
-      {/* Popular badge */}
-      {plan.popular && (
-        <div className="absolute top-0 left-0 right-0 z-20">
-          <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 text-center py-2 text-sm font-bold flex items-center justify-center gap-2 badge-pulse">
-            <Star size={16} fill="currentColor" />
-            MÁS ELEGIDO — MEJOR RELACIÓN VALOR/PRECIO
-            <Star size={16} fill="currentColor" />
-          </div>
+      {/* Popular ribbon */}
+      {tier.popular && (
+        <div className={`bg-gradient-to-r ${product.gradientFrom} ${product.gradientTo} text-slate-900 text-center py-2 text-xs font-black flex items-center justify-center gap-1.5 badge-pulse`}>
+          <Star size={13} fill="currentColor" />
+          RECOMENDADO
+          <Star size={13} fill="currentColor" />
         </div>
       )}
 
-      <div
-        className={`flex flex-col flex-1 p-6 md:p-8 ${
-          plan.popular
-            ? 'bg-gradient-to-b from-slate-800 to-slate-900 pt-14'
-            : 'glass-strong'
-        }`}
-      >
-        {/* Header */}
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-3 ${
-              plan.popular
-                ? 'bg-amber-400/20 text-amber-300'
-                : 'bg-blue-500/10 text-blue-400'
-            }`}>
-              <Icon size={14} />
-              {plan.subtitle}
-            </div>
-            <h3 className={`text-2xl md:text-3xl font-black ${
-              plan.popular ? 'gradient-text-gold' : 'text-white'
-            }`}>
-              {plan.name}
-            </h3>
-          </div>
-        </div>
-
-        {/* Price */}
-        <div className="mb-6">
-          {plan.originalPrice && (
-            <div className="text-slate-500 line-through text-lg mb-1">
-              {plan.currency}{plan.originalPrice.toLocaleString()}
-            </div>
-          )}
+      <div className={`flex flex-col flex-1 p-5 md:p-6 ${
+        tier.popular ? 'bg-slate-800/90' : 'glass-strong'
+      }`}>
+        {/* Tier name + price */}
+        <div className="mb-4">
+          <h4 className={`text-lg font-bold mb-1 ${tier.popular ? product.colorAccent : 'text-slate-300'}`}>
+            {tier.name}
+          </h4>
           <div className="flex items-baseline gap-1">
-            <span className="text-slate-400 text-lg">{plan.currency}</span>
-            <span className={`text-4xl md:text-5xl font-black ${
-              plan.popular ? 'text-amber-400' : 'text-white'
-            }`}>
-              {plan.price.toLocaleString()}
+            <span className="text-slate-500 text-sm">S/</span>
+            <span className={`text-3xl font-black ${tier.popular ? 'text-white' : 'text-slate-200'}`}>
+              {tier.price.toLocaleString()}
             </span>
-            <span className="text-slate-500 text-sm ml-2">pago {plan.period}</span>
-          </div>
-          {plan.originalPrice && (
-            <div className="inline-flex items-center gap-1 mt-2 px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs font-bold">
-              Ahorras {plan.currency}{(plan.originalPrice - plan.price).toLocaleString()}
-            </div>
-          )}
-        </div>
-
-        {/* Monthly maintenance */}
-        <div className={`flex items-center gap-3 p-4 rounded-2xl mb-6 ${
-          plan.popular ? 'bg-amber-500/10 border border-amber-500/20' : 'bg-slate-800/50 border border-slate-700/50'
-        }`}>
-          <Wrench size={18} className={plan.popular ? 'text-amber-400' : 'text-blue-400'} />
-          <div>
-            <div className="text-xs text-slate-400">Mantenimiento mensual</div>
-            <div className={`font-bold ${plan.popular ? 'text-amber-300' : 'text-white'}`}>
-              {plan.currency}{plan.monthlyMaintenance}/mes
-            </div>
-          </div>
-          <div className="ml-auto flex items-center gap-1.5 text-slate-500 text-xs">
-            <Clock size={13} />
-            {plan.deliveryWeeks} semanas
           </div>
         </div>
 
-        {/* Description */}
-        <p className="text-slate-400 text-sm leading-relaxed mb-6">
-          {plan.description}
-        </p>
-
-        {/* Key highlights */}
-        <div className="space-y-2 mb-6">
-          {plan.highlights.map((h, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-                plan.popular
-                  ? 'bg-amber-400/20 text-amber-400'
-                  : 'bg-blue-500/20 text-blue-400'
-              }`}>
-                <Check size={12} strokeWidth={3} />
-              </div>
-              <span className="text-white text-sm font-medium">{h}</span>
+        {/* Included features (always visible) */}
+        <div className="space-y-2 mb-3 flex-1">
+          {included.map((f, i) => (
+            <div key={i} className="flex items-start gap-2">
+              <Check
+                size={15}
+                className={`flex-shrink-0 mt-0.5 ${
+                  f.highlight ? product.colorAccent : 'text-green-400'
+                }`}
+                strokeWidth={2.5}
+              />
+              <span className={`text-sm ${f.highlight ? 'text-white font-medium' : 'text-slate-300'}`}>
+                {f.text}
+              </span>
+              {f.highlight && (
+                <span className={`ml-auto text-[9px] px-1.5 py-0.5 rounded-full ${product.bgAccent} ${product.colorAccent} font-bold flex-shrink-0`}>
+                  +
+                </span>
+              )}
             </div>
           ))}
         </div>
 
-        {/* Expand/collapse full feature list */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2 mb-4"
-        >
-          <ArrowRight size={14} className={`transition-transform ${expanded ? 'rotate-90' : ''}`} />
-          {expanded ? 'Ocultar' : 'Ver'} todos los {plan.features.length} servicios
-        </button>
-
-        {/* Full features list */}
-        <div className={`transition-all duration-500 overflow-hidden ${
-          expanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="space-y-2 pb-4 border-b border-slate-700/50 mb-6">
-            {plan.features.map((f, i) => (
-              <div
-                key={i}
-                className={`flex items-center gap-3 text-sm ${
-                  f.included ? '' : 'opacity-40'
-                } ${f.highlight ? 'font-medium' : ''}`}
-              >
-                {f.included ? (
-                  <Check
-                    size={16}
-                    className={f.highlight
-                      ? (plan.popular ? 'text-amber-400' : 'text-purple-400')
-                      : 'text-green-400'
-                    }
-                  />
-                ) : (
-                  <X size={16} className="text-slate-600" />
-                )}
-                <span className={f.included ? 'text-slate-300' : 'text-slate-600'}>
-                  {f.text}
-                </span>
-                {f.highlight && f.included && (
-                  <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full bg-amber-400/10 text-amber-400 font-bold">
-                    NUEVO
-                  </span>
-                )}
+        {/* Excluded features (collapsible) */}
+        {excluded.length > 0 && (
+          <>
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1.5 mb-3"
+            >
+              <ChevronDown size={12} className={`transition-transform ${expanded ? 'rotate-180' : ''}`} />
+              {excluded.length} no incluido{excluded.length > 1 ? 's' : ''}
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 ${expanded ? 'max-h-[400px] opacity-100 mb-3' : 'max-h-0 opacity-0'}`}>
+              <div className="space-y-1.5">
+                {excluded.map((f, i) => (
+                  <div key={i} className="flex items-start gap-2 opacity-40">
+                    <X size={14} className="text-slate-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-xs text-slate-600">{f.text}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          </>
+        )}
 
-        {/* CTA - pushed to bottom */}
-        <div className="mt-auto">
-          <a
-            href="https://wa.me/51999999999?text=Hola!%20Me%20interesa%20el%20plan%20" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`block w-full py-4 rounded-2xl font-bold text-center transition-all hover:scale-[1.02] hover:shadow-xl ${
-              plan.popular
-                ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 shadow-lg shadow-amber-500/20'
-                : 'bg-white/10 text-white hover:bg-white/20'
-            }`}
-          >
-            {plan.popular ? '🚀 Elegir Plan Profesional' : `Elegir ${plan.name}`}
-          </a>
-        </div>
+        {/* CTA */}
+        <button
+          className={`w-full py-3 rounded-xl font-bold text-sm transition-all hover:scale-[1.02] mt-auto ${
+            tier.popular
+              ? `bg-gradient-to-r ${product.gradientFrom} ${product.gradientTo} text-slate-900 shadow-lg`
+              : 'bg-white/5 text-slate-300 hover:bg-white/10 border border-slate-700/50'
+          }`}
+        >
+          {tier.cta}
+        </button>
       </div>
     </motion.div>
   );
 }
 
-export default function Plans() {
+/* ─── Product section ─── */
+function ProductSection({ product, index }: { product: Product; index: number }) {
+  const Icon = product.icon;
+
   return (
-    <section id="planes" className="relative py-24 md:py-32 mesh-gradient">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
+    <div className={`py-16 md:py-24 ${index % 2 === 0 ? 'bg-slate-950' : 'mesh-gradient'}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Product header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-10"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-bold text-amber-400 mb-4">
-            💎 PLANES Y PRECIOS
-          </span>
-          <h2 className="text-white mb-4">
-            Elige el plan perfecto para{' '}
-            <span className="gradient-text-gold">tu institución</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Tres opciones diseñadas para cada etapa de transformación digital.
-            Todos los precios en Soles peruanos.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+            <div className={`w-14 h-14 rounded-2xl ${product.bgAccent} border ${product.borderAccent} flex items-center justify-center`}>
+              <Icon size={26} className={product.colorAccent} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">{product.emoji}</span>
+                <h2 className={`text-2xl md:text-3xl font-black text-white`}>
+                  {product.name}
+                </h2>
+              </div>
+              <p className={`${product.colorAccent} text-sm font-semibold`}>{product.tagline}</p>
+            </div>
+            <div className="sm:ml-auto flex items-center gap-2 text-slate-500 text-sm">
+              <Clock size={14} />
+              {product.deliveryWeeks}
+            </div>
+          </div>
+          <p className="text-slate-400 max-w-2xl text-sm md:text-base">{product.description}</p>
         </motion.div>
 
-        {/* Plans grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-4 items-start max-w-6xl mx-auto">
-          {PLANS.map((plan, i) => (
-            <PlanCard key={plan.id} plan={plan} index={i} />
+        {/* Tiers grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-start">
+          {product.tiers.map((tier, i) => (
+            <TierCard key={tier.id} tier={tier} product={product} index={i} />
           ))}
         </div>
-
-        {/* Bottom note */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 space-y-2"
-        >
-          <p className="text-slate-500 text-sm">
-            * Todos los planes incluyen código fuente. Sin contratos de permanencia.
-          </p>
-          <p className="text-slate-500 text-sm">
-            * El presupuesto de Meta Ads (Facebook/Instagram) es adicional y lo controla el colegio directamente.
-          </p>
-        </motion.div>
       </div>
+    </div>
+  );
+}
+
+/* ─── Main Plans component ─── */
+export default function Plans() {
+  return (
+    <section id="planes">
+      {/* Section intro */}
+      <div className="bg-slate-950 pt-24 md:pt-32 pb-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-bold text-amber-400 mb-4">
+              💎 4 SERVICIOS INDEPENDIENTES
+            </span>
+            <h2 className="text-white mb-4 text-3xl md:text-4xl font-black">
+              Elige exactamente{' '}
+              <span className="gradient-text-gold">lo que necesitas</span>
+            </h2>
+            <p className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg">
+              Cada servicio tiene sus propios planes. Contrata uno, varios, o todos.
+              Al final, los paquetes combinados te dan el mejor precio.
+            </p>
+          </motion.div>
+
+          {/* Quick nav pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center gap-2 mt-8"
+          >
+            {PRODUCTS.map((p) => {
+              const PIcon = p.icon;
+              return (
+                <a
+                  key={p.id}
+                  href={`#${p.id}`}
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all hover:scale-105 ${p.bgAccent} ${p.colorAccent} border ${p.borderAccent} hover:bg-opacity-20`}
+                >
+                  <PIcon size={16} />
+                  {p.name}
+                </a>
+              );
+            })}
+            <a
+              href="#paquetes"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-amber-400/20 to-orange-500/20 text-amber-400 border border-amber-500/30 hover:scale-105 transition-all"
+            >
+              <ArrowRight size={16} />
+              Ver Paquetes
+            </a>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Product sections */}
+      {PRODUCTS.map((product, i) => (
+        <div key={product.id} id={product.id}>
+          <ProductSection product={product} index={i} />
+        </div>
+      ))}
     </section>
   );
 }

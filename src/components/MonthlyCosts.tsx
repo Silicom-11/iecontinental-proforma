@@ -1,15 +1,9 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MONTHLY_COSTS, PLANS } from '../data/plans';
+import { MONTHLY_COSTS_BUNDLE } from '../data/plans';
 import { DollarSign, TrendingDown, Info } from 'lucide-react';
 
-type PlanId = 'esencial' | 'profesional' | 'empresarial';
-
 export default function MonthlyCosts() {
-  const [activePlan, setActivePlan] = useState<PlanId>('profesional');
-  const costs = MONTHLY_COSTS[activePlan];
-  const plan = PLANS.find((p) => p.id === activePlan)!;
-
+  const costs = MONTHLY_COSTS_BUNDLE;
   const realCost = costs.items.reduce((sum, item) => sum + item.cost, 0);
   const margin = costs.total - realCost;
   const marginPercent = Math.round((margin / costs.total) * 100);
@@ -32,37 +26,15 @@ export default function MonthlyCosts() {
             <span className="gradient-text">mantenimiento mensual</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Total transparencia en lo que incluye cada plan mensual.
-            Sin costos ocultos, sin sorpresas.
+            Ejemplo del Pack Transformación Total. Sin costos ocultos, sin sorpresas.
           </p>
         </motion.div>
 
-        {/* Plan selector */}
-        <div className="flex justify-center gap-2 mb-10">
-          {PLANS.map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setActivePlan(p.id as PlanId)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                activePlan === p.id
-                  ? p.id === 'profesional'
-                    ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 shadow-lg shadow-amber-500/20'
-                    : p.id === 'empresarial'
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/20'
-                    : 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/20'
-                  : 'glass text-slate-400 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              {p.name}
-            </button>
-          ))}
-        </div>
-
         {/* Cost breakdown */}
         <motion.div
-          key={activePlan}
           initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="glass-strong rounded-3xl overflow-hidden"
         >
           {/* Items */}
@@ -88,32 +60,18 @@ export default function MonthlyCosts() {
           </div>
 
           {/* Total */}
-          <div className={`px-6 md:px-8 py-6 ${
-            activePlan === 'profesional'
-              ? 'bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-t border-amber-500/20'
-              : activePlan === 'empresarial'
-              ? 'bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-t border-purple-500/20'
-              : 'bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border-t border-blue-500/20'
-          }`}>
+          <div className="px-6 md:px-8 py-6 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-t border-amber-500/20">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <DollarSign size={24} className={
-                  activePlan === 'profesional' ? 'text-amber-400' :
-                  activePlan === 'empresarial' ? 'text-purple-400' :
-                  'text-blue-400'
-                } />
+                <DollarSign size={24} className="text-amber-400" />
                 <div>
                   <div className="text-white font-bold text-lg">Total Mensual</div>
                   <div className="text-slate-400 text-xs">Facturado al colegio</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className={`text-3xl font-black ${
-                  activePlan === 'profesional' ? 'text-amber-400' :
-                  activePlan === 'empresarial' ? 'text-purple-400' :
-                  'text-blue-400'
-                }`}>
-                  {plan.currency}{costs.total}/mes
+                <div className="text-3xl font-black text-amber-400">
+                  S/{costs.total}/mes
                 </div>
               </div>
             </div>
@@ -134,8 +92,7 @@ export default function MonthlyCosts() {
             </p>
             <p className="text-slate-400 text-xs">
               El margen de S/{margin}/mes ({marginPercent}%) cubre soporte técnico, actualizaciones de seguridad,
-              monitoreo y garantía de funcionamiento continuo. Esto es un costo justo y competitivo
-              comparado con servicios similares que cobran S/800-1,500/mes.
+              monitoreo y garantía de funcionamiento continuo. Competitivo frente a servicios similares que cobran S/800-1,500/mes.
             </p>
           </div>
         </motion.div>
@@ -144,7 +101,7 @@ export default function MonthlyCosts() {
         <div className="flex items-start gap-3 mt-4 text-slate-500 text-xs">
           <Info size={14} className="flex-shrink-0 mt-0.5" />
           <p>
-            Los precios en dólares se convierten a soles al tipo de cambio de S/3.80.
+            Precios en dólares convertidos a soles (TC S/3.80).
             Muchos servicios son gratuitos gracias a free tiers de proveedores enterprise.
           </p>
         </div>
