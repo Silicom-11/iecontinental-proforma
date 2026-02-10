@@ -395,7 +395,7 @@ export const BUNDLES: BundlePack[] = [
     priceSum: 5500 + 4500,
     bundlePrice: 8900,
     popular: false,
-    monthlyMaintenance: 200,
+    monthlyMaintenance: 250,
     color: 'blue',
   },
   {
@@ -406,7 +406,7 @@ export const BUNDLES: BundlePack[] = [
     priceSum: 5500 + 12500 + 6500 + 4500,
     bundlePrice: 22900,
     popular: true,
-    monthlyMaintenance: 350,
+    monthlyMaintenance: 407,
     color: 'gold',
   },
   {
@@ -417,7 +417,7 @@ export const BUNDLES: BundlePack[] = [
     priceSum: 5500 + 12500 + 6500,
     bundlePrice: 19500,
     popular: false,
-    monthlyMaintenance: 300,
+    monthlyMaintenance: 350,
     color: 'purple',
   },
 ];
@@ -515,7 +515,7 @@ export const FAQS = [
   },
   {
     question: '¿Qué incluye el mantenimiento mensual?',
-    answer: 'Hosting del servidor, base de datos, almacenamiento cloud, SSL, monitoreo 24/7, actualizaciones de seguridad, soporte técnico y respaldo de datos. Todo para que funcione sin interrupciones.',
+    answer: 'Servidor cloud dedicado (Hetzner VPS), base de datos MongoDB Atlas, almacenamiento y CDN Cloudflare, 2 dominios .edu.pe, consulta DNI vía RENIEC, monitoreo 24/7, actualizaciones de seguridad, soporte técnico con consultas ilimitadas y respaldo de datos. Todo para que funcione sin interrupciones.',
   },
   {
     question: '¿Cómo funciona la consulta de DNI con RENIEC?',
@@ -523,7 +523,7 @@ export const FAQS = [
   },
   {
     question: '¿Cómo llegan las notificaciones por WhatsApp?',
-    answer: 'Usamos la API oficial de WhatsApp Business (Meta). Los padres reciben mensajes automáticos sobre calificaciones, comunicados y recordatorios desde el número oficial del colegio.',
+    answer: 'Usamos la API oficial de WhatsApp Business (Meta). Los padres reciben mensajes automáticos sobre calificaciones, comunicados y recordatorios desde el número oficial del colegio. El costo de la API está incluido en el mantenimiento mensual.',
   },
   {
     question: '¿Dónde se almacenan los datos?',

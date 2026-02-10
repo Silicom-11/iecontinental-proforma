@@ -105,7 +105,7 @@ export default function TechStack() {
             {/* VPS layer */}
             <div className="bg-blue-500/5 border border-blue-500/20 rounded-2xl p-6 mb-4">
               <div className="text-center text-xs font-bold text-blue-400 mb-4">
-                🖥️ HETZNER VPS — Ashburn, Virginia (2 vCPU, 8GB RAM, 80GB NVMe)
+                🖥️ HETZNER VPS — Ashburn, Virginia (3 vCPU AMD, 4GB RAM, 80GB SSD)
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
