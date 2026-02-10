@@ -146,22 +146,7 @@ export default function MonthlyCosts() {
               </div>
             </div>
 
-            {/* Ad Budget */}
-            <div className="px-6 md:px-8 py-4 flex items-center justify-between hover:bg-slate-800/20 transition-colors">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-purple-400" />
-                <div>
-                  <div className="text-white text-sm font-medium">{optionalMarketing.adBudget.label}</div>
-                  <div className="text-slate-500 text-xs">{optionalMarketing.adBudget.note}</div>
-                </div>
-              </div>
-              <div className="text-right flex-shrink-0 ml-4">
-                <span className="text-white font-bold">
-                  S/{optionalMarketing.adBudget.min}-{optionalMarketing.adBudget.max}
-                </span>
-                <span className="text-slate-500 text-xs block">/mes</span>
-              </div>
-            </div>
+
 
             {/* Optional Total */}
             <div className="px-6 md:px-8 py-4 bg-pink-500/5 border-t border-pink-500/10">
@@ -174,7 +159,7 @@ export default function MonthlyCosts() {
                 </div>
                 <div className="text-right">
                   <span className="text-pink-400 font-bold">
-                    Desde S/{optionalMarketing.management.cost + optionalMarketing.adBudget.min}/mes
+                    Desde S/{optionalMarketing.management.cost}/mes
                   </span>
                 </div>
               </div>

@@ -404,7 +404,6 @@ export const MONTHLY_COSTS_BUNDLE = {
   comparison: 'Empresas similares cobran S/800 — S/1,500/mes por servicios equivalentes.',
   optionalMarketing: {
     management: { cost: 1100, label: 'Gestión Redes Sociales + Analista de Métricas', note: 'Desde S/1,100/mes — sujeto a los requerimientos del cliente. Incluye administración de Facebook + TikTok, creación de contenido, análisis diario y optimización de campañas' },
-    adBudget: { min: 300, max: 500, label: 'Presupuesto Publicitario (Facebook + TikTok Ads)', note: 'Inversión directa en las plataformas — el colegio lo controla desde su cuenta' },
   },
 };
 
@@ -445,10 +444,7 @@ export const MARKETING_DETAILS = {
       { metric: 'Leads mensuales', target: '30 - 80 consultas' },
     ],
   },
-  adBudget: {
-    recommended: 'S/ 300 - 500 / mes',
-    note: 'Presupuesto publicitario adicional que el colegio invierte directamente en Facebook y TikTok Ads. No incluido en nuestros planes.',
-  },
+
 };
 
 /* ──────────────────── TECH STACK ──────────────────── */
@@ -501,6 +497,6 @@ export const FAQS = [
   },
   {
     question: '¿El colegio necesita contratar algo adicional?',
-    answer: 'No. Todo incluido. El único costo adicional opcional es el presupuesto de Facebook y TikTok Ads (recomendamos S/300-500/mes) que el colegio controla directamente.',
+    answer: 'No. Todo incluido. El mantenimiento mensual cubre infraestructura, soporte y actualizaciones. Si deseas marketing digital, se contrata por separado.',
   },
 ];

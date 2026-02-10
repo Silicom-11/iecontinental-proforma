@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { MARKETING_DETAILS } from '../data/plans';
-import { Target, TrendingUp, BarChart3, Users, Megaphone, Eye, MousePointerClick, UserPlus } from 'lucide-react';
+import { Target, TrendingUp, BarChart3, Users, Eye, MousePointerClick, UserPlus } from 'lucide-react';
 
 export default function Marketing() {
-  const { platforms, metricsAnalyst, adBudget } = MARKETING_DETAILS;
+  const { platforms, metricsAnalyst } = MARKETING_DETAILS;
 
   return (
     <section id="marketing" className="relative py-24 md:py-32 mesh-gradient overflow-hidden">
@@ -125,28 +125,7 @@ export default function Marketing() {
           </div>
         </motion.div>
 
-        {/* Ad Budget Callout */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
-        >
-          <div className="glass rounded-2xl p-6 border-l-4 border-amber-400">
-            <div className="flex items-start gap-4">
-              <Megaphone size={24} className="text-amber-400 flex-shrink-0 mt-1" />
-              <div>
-                <h4 className="text-white font-bold mb-1">Presupuesto Publicitario Recomendado</h4>
-                <p className="text-slate-400 text-sm mb-2">
-                  {adBudget.note}
-                </p>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-400/10 rounded-xl">
-                  <span className="text-amber-400 font-bold text-lg">{adBudget.recommended}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
